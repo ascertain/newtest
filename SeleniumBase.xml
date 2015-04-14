@@ -1,0 +1,871 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SeleniumBase</name>
+    </assembly>
+    <members>
+        <member name="T:SeleniumBase.Configuration.TestSetting">
+            <summary>
+                Settings class to configure test
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Configuration.TestSetting.#ctor">
+            <summary>
+                Constructs the settings class based on the values found. TestSettings section in app.config
+                Required values that are not found in app.config are set to defaultdefault values: 
+            Locale = "en-US";
+            Browser = BrowserType.Chrome;
+            Environment = LEGOEnvironment.Dev;
+            SubmitTestCaseResultToRally = false;
+            ConsoleLogLevel = LogLevel.Info;
+            UseNewBrowserInstance = false;
+            BrowserStartUpOptions = new BrowserStartUpOptions();
+            UseDevInsteadOfLocalServices = true;
+            RallyTestCaseId = "";
+            BaseUrl = "http://www.lego.com";
+            RemoteWebDriverUrl = "http://dkaapp-st1.corp.lego.com:4444/wd/hub";
+            LoggingDirectory = ".\\logs";
+            Sequential = false;
+            SuppressFileLogging = false;
+            SuppressUseOfImagesFromLogDirForAllureReport = false;
+            SuppressWebDriver = false;
+            BrowserSize = new Size(1280, 1024);
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Configuration.TestSetting.Equals(LEGO.QA.SharedTypes.Configuration.ITestSettings)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <returns>
+            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+            </returns>
+            <param name="other">An object to compare with this object.</param>
+        </member>
+        <member name="M:SeleniumBase.Configuration.TestSetting.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>
+            A string that represents the current object.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:SeleniumBase.Configuration.TestSetting.Load(System.String,SeleniumBase.Services.IFileService)">
+            <summary>
+            Load settings from a XML file
+            </summary>
+            <param name="filePath">Path to the xml file that should be deserialized</param>
+            <param name="fileService">Service to manage tasks with file system</param>
+            <returns>TestSetting with values found in file</returns>
+        </member>
+        <member name="M:SeleniumBase.Configuration.TestSetting.Save(System.String)">
+            <summary>
+            Save the current instance to specified XML file
+            </summary>
+            <param name="filePath">Path to the XML file. If it does not exist it will be created. If it exist it will be overwirtten.</param>
+            <returns>Operation success</returns>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.BrowserSize">
+            <summary>
+            Specifies what size the WebDriver should use
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.Locale">
+            <summary>
+                Locale that the test should use
+                E.g. en-us
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.Browser">
+            <summary>
+                browserType that should be used
+                If useRemoteWebDriver flag is set to true, but RemoteBrowserConfiguration is not set, the this browserType will be
+                used to determind which remote browserType to start
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.Environment">
+            <summary>
+                LEGO DefectEnvironment
+                E.g. DEV
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.SubmitTestCaseResultToRally">
+            <summary>
+                Flag that indicates if test case result should be submitted to Rally
+                Warning: RallyTestCaseId should be set
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.UseRemoteBrowser">
+            <summary>
+                Flag that indicates if remote WebDriver should be used
+                True = will use remote webdriver | False = will start local webdriver
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.RallyTestCaseId">
+            <summary>
+                Test Case ID in Rally that should be reported to (E.g. TC1088)
+                Warning: SubmitTestCaseResultToRally must be set to true
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.BaseUrl">
+            <summary>
+                URL that should be used as base
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.UseDevInsteadOfLocalServices">
+            <summary>
+            Specifies if the UrlHandler should convert third party services, such as LEGO ID etc., to DEV instead of Locale
+            Defaults to true
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.RemoteBrowserConfiguraion">
+            <summary>
+                Remote browserconfiguraiton that should be set if the test is supposed to run on BrowserStack
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.ClearDateOfBirthCookie">
+            <summary>
+                Flag that indicates if the date of birth cookie should be cleared after the test
+                Usefull when you uses LEGO ID accounts in your test
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.ConsoleLogLevel">
+            <summary>
+                Specifies the lowest level of infomation that should be printed to console
+                E.g. Trace
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.UseNewBrowserInstance">
+            <summary>
+                Set this to start a new browserType instance even if a instance of this browserType type is already open. Default: false.
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.BrowserStartUpOptions">
+            <summary>
+                Set special conditions that browserType should start up with. Note that not all browsers necessarily support all
+                options
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.RemoteWebDriverUrl">
+            <summary>
+            URL to remote webdriver hub
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.LoggingDirectory">
+            <summary>
+            Path to folder where logs and screenshots should be saved
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.Sequential">
+            <summary>
+            Defines if tests should run sequential or if they can be runned in parallel
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.SuppressWebDriver">
+            <summary>
+            Defines if the Web driver should be started or not
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.SuppressFileLogging">
+            <summary>
+            Defines if the logger should write to a log file in the log directory
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.SuppressUseOfImagesFromLogDirForAllureReport">
+            <summary>
+            Defines if the images in saved to log directory should be used in the Allure report
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.Configuration.TestSetting.TakeScreenshotBeforeAssert">
+            <summary>
+            Instructs asserthelper to take screenshot before assert
+            </summary>
+        </member>
+        <member name="T:SeleniumBase.Services.ITestSettingService">
+            <summary>
+            Interface for test setting service
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Services.ITestSettingService.GetTestSetting">
+            <summary>
+            Loads settings from file if present and defaults values that are not set
+            </summary>
+            <returns>Settings</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.ITestSettingService.GetTestSetting(System.String)">
+            <summary>
+            Loads settings from file specified and defaults values that are not set
+            </summary>
+            <param name="pathToSettingsFile">Path to testsetting file. File must be XML.</param>
+            <returns>Settings</returns>
+        </member>
+        <member name="T:SeleniumBase.Services.TestSettingService">
+            <summary>
+            Service to handle TestSetting
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Services.TestSettingService.#ctor(SeleniumBase.Services.IFileService)">
+            <summary>
+            Constructs the test setting service
+            </summary>
+            <param name="fileService">Service to handle file system operations</param>
+        </member>
+        <member name="M:SeleniumBase.Services.TestSettingService.GetTestSetting">
+            <summary>
+            Loads settings from file if present and defaults values that are not set
+            </summary>
+            <returns>Settings</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.TestSettingService.GetTestSetting(System.String)">
+            <summary>
+            Loads settings from file specified and defaults values that are not set
+            </summary>
+            <param name="pathToSettingsFile">Path to testsetting file. File must be XML.</param>
+            <returns>Settings</returns>
+        </member>
+        <member name="T:SeleniumBase.DomainObjects.IScreenShotRemoteWebDriver">
+            <summary>
+                Interface that enables screenshot capabilities on remote webdriver
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.DomainObjects.IScreenShotRemoteWebDriver.WebDriverType">
+            <summary>
+                Returns the instantiated remote webdriver type.
+                E.g. Chrome.
+            </summary>
+        </member>
+        <member name="T:SeleniumBase.DomainObjects.ScreenShotRemoteWebDriver">
+            <summary>
+                Remote WebDriver that implements screenshot functionality
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.DomainObjects.ScreenShotRemoteWebDriver.#ctor(System.Uri,OpenQA.Selenium.ICapabilities)">
+            <summary>
+                Constructs the remote WebDriver
+            </summary>
+            <param name="serverAddress">Address to the Selenium hub</param>
+            <param name="capabilities">Capabilities that the remote WebDriver should have</param>
+        </member>
+        <member name="P:SeleniumBase.DomainObjects.ScreenShotRemoteWebDriver.WebDriverType">
+            <summary>
+                Returns the instantiated remote webdriver type.
+                E.g. Chrome.
+            </summary>
+        </member>
+        <member name="T:SeleniumBase.Extensions.StringExtensions">
+            <summary>
+            Extensions for converting string objects to Selenium By objects
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Extensions.StringExtensions.ToByXPath(System.String)">
+            <summary>
+            Converts a string xpath into By.XPath object
+            </summary>
+            <param name="target">String that represents XPath</param>
+            <returns>XPath object that can be used by Selenium</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.StringExtensions.ToById(System.String)">
+            <summary>
+            Converts a string into By.Id object
+            </summary>
+            <param name="target">String that represents Id of element</param>
+            <returns>Id object that can be used by Selenium</returns>
+        </member>
+        <member name="T:SeleniumBase.Extensions.WebDriverExtensions">
+            <summary>
+            Extensions for Selenium WebDriver
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.WaitForElementByCssClassname(OpenQA.Selenium.IWebDriver,System.String)">
+            <summary>
+            Makes WebDriver wait for an element to appear. Waits max. 8 seconds
+            </summary>
+            <param name="driver">WebDriver to perform the wait</param>
+            <param name="cssclassname">Classname of the element to wait for</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.WaitForElementById(OpenQA.Selenium.IWebDriver,System.String)">
+            <summary>
+            Makes WebDriver wait for an element to appear. Waits max. 8 seconds
+            </summary>
+            <param name="driver">WebDriver to perform the wait</param>
+            <param name="id">Id of the element to wait for</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.WaitForElementByText(OpenQA.Selenium.IWebDriver,System.String)">
+            <summary>
+            Makes WebDriver wait for an element to appear. Waits max. 8 seconds
+            </summary>
+            <param name="driver">WebDriver to perform the wait</param>
+            <param name="id">Text of the element to wait for</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.IsElementPresent(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By)">
+            <summary>
+            Determines of the element is present on current page
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="by">Selector for the element to test for</param>
+            <returns>True if element is present on page. False if element could not be found on page.</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.GetLink(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By)">
+            <summary>
+            Return the link found in the href attribute of an element
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="by">Selector for the element</param>
+            <returns>Link found in the href attribute. Null if element could not be found.</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.GetSelectElement(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By)">
+            <summary>
+            Finds a web element and wraps it into a Selenium SelectElement
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="by">Locator for the select element to find</param>
+            <returns>A Seleniun SelectElement</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.GetElement(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By)">
+            <summary>
+            Finds a element and throws a ElementNotVisible exception if it cannot be found.
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="by">Locator for the element to find</param>
+            <returns>Selenium WebElement if it is found. Throws exception if not.</returns>
+            <exception cref="T:OpenQA.Selenium.ElementNotVisibleException"></exception>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.GetImage(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By)">
+            <summary>
+            Returns the src attribute of a webelement
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="by">Locator for the element to extract src attribute</param>
+            <returns>Value found in src attribute of web element. Returns null if element could not be found.</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.GetText(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By)">
+            <summary>
+            Return the title attribute of a web element
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="by">Locator for the web element</param>
+            <returns>Value in title attribute. Returns null if element could not be found.</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.SetUserLocation(OpenQA.Selenium.IWebDriver,System.String,System.String)">
+            <summary>
+            Sets a cookie that instructs LEGO.com to treat the browserType as if it was having an IP of a target country.
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="countryCode">The country code of the targeted country. Eg. DK.</param>
+            <param name="domain">The domain the cookie should use. Eg. lego.com</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.SetMarketPrefCookie(OpenQA.Selenium.IWebDriver,System.String,System.String)">
+            <summary>
+            Sets a cookie that instructs LEGO.com to use a certain market for the browserType.
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="siteCulture">The locale to use. Eg. da-DK.</param>
+            <param name="domain">The domain the cookie should use. Eg. lego.com</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.SwitchToIframe(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Switches focus to the first iframe found on webpage. If there are multiple iframes on page it will switch to the one that contains "market" or "changeregion" in their source.
+            </summary>
+            <param name="driver">The WebDriver to use.</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.AcceptAlert(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Keeps accepting alertboxes on the page until there are no more. If none is present it will not do anything.
+            </summary>
+            <param name="driver">The WebDriver to use.</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.CancelAlert(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Keeps cancelling alertboxes on the page until there are no more. If none is present it will not do anything.
+            </summary>
+            <param name="driver">The WebDriver to use.</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.IsAlertPresent(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Detects if an alertbox is present on the page.
+            </summary>
+            <param name="driver">The WebDriver to use.</param>
+            <returns>True if an alertbox was found. False if no alertboxes could be found.</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.TakeScreenshot(OpenQA.Selenium.IWebDriver,System.String)">
+            <summary>
+            Takes a screenshot of the current page.
+            </summary>
+            <param name="driver">The WebDriver to use.</param>
+            <param name="saveLocation">Location on file system where the screenshot should be saved.</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.DisableFlashPluginOnChrome(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Disables the flashplugin in Google Chrome via the chrome://plugins tab
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.IsErrorPage(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Detects if the current page is a LEGO.com error page.
+            </summary>
+            <param name="driver">The WebDriver to use.</param>
+            <returns>True if the current page contains the image of cable guy. False if the current page does not contain cable guy.</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.GetLinks(OpenQA.Selenium.IWebDriver,System.String,System.String)">
+            <summary>
+            Navigates to the URL and finds all the links on the page.
+            </summary>
+            <param name="driver">The WebDriver to use.</param>
+            <param name="pageUrl">The URL to navigate to</param>
+            <param name="predicate">The predicate that the link should start with.</param>
+            <returns>A list of all the links found that matches the predicate.</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.GetLinkAttr(OpenQA.Selenium.IWebElement)">
+            <summary>
+            Returns the value found in href attribute of an webElement
+            </summary>
+            <param name="element">The element to extract attribute from</param>
+            <returns>Value in href attribute. string.Empty if StaleElementReferenceException is thrown.</returns>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.RetryFindElement(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By,System.Int32)">
+            <summary>
+            Tries to find an element for the amount of retries passed. For each retry it will sleep for 200 ms before trying again.
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="by">The locator for the element that should be found.</param>
+            <param name="retries">The number of retries that should be used</param>
+            <returns>The webelement that was requested</returns>
+            <exception cref="T:OpenQA.Selenium.ElementNotVisibleException">If the element could not be found within the number of retries this exception is thrown.</exception>
+        </member>
+        <member name="M:SeleniumBase.Extensions.WebDriverExtensions.RetryFindElement(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By)">
+            <summary>
+            Tries to find an element for within maximum 20 times. For each retry it will sleep for 200 ms before trying again.
+            </summary>
+            <param name="driver">The WebDriver to use</param>
+            <param name="by">The locator for the element to find.</param>
+            <returns>The Selenium Webelement requested. If none could be found an ElementNotVisibleException is thrown.</returns>
+        </member>
+        <member name="T:SeleniumBase.ImageFileSource">
+            <summary>
+            Handler for setting correct screenshots in Allure report
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.ImageFileSource.#ctor(System.String)">
+            <summary>
+            Sets the logging directory to use for finding screenshots
+            </summary>
+            <param name="logDir"></param>
+        </member>
+        <member name="M:SeleniumBase.ImageFileSource.GetImage">
+            <summary>
+            Finds the latest image in logging directory (.jpg or .png) and reads it into bytes
+            </summary>
+            <returns>Bytes of the latest screenshot in logging directory</returns>
+        </member>
+        <member name="T:SeleniumBase.Preconditions">
+            <summary>
+            Holds a collection of general methods to use before execution of tests
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Preconditions.#ctor(OpenQA.Selenium.IWebDriver,LEGO.QA.SharedTypes.IUrlHandler,System.Text.StringBuilder)">
+            <summary>
+            Constructs a Preconditions object
+            </summary>
+            <param name="driver">The Selenium Webdriver instance used for testing</param>
+            <param name="urlHandler">An instance of an IUrlHandler implementation</param>
+            <param name="rallyNotes">Rally notes for current test</param>
+        </member>
+        <member name="M:SeleniumBase.Preconditions.PageAvailable(System.String)">
+            <summary>
+            Asserts if page is available, and if not it writes an entry in rally notes and throws an Nunit Inconclusive Exception
+            </summary>
+            <param name="url">url of the page to test</param>
+            <exception cref="T:NUnit.Framework.InconclusiveException">Thrown if page is not available</exception>
+        </member>
+        <member name="P:SeleniumBase.Preconditions.UrlHandler">
+            <summary>
+            Handler for URLs during test
+            </summary>
+        </member>
+        <member name="T:SeleniumBase.BaseTestsuite">
+            <summary>
+                Selenium Base class handles Setup and TearDown for tests
+            </summary>
+        </member>
+        <member name="F:SeleniumBase.BaseTestsuite.WebDriverProxy">
+            <summary>
+            Selenium proxy server
+            </summary>
+        </member>
+        <member name="F:SeleniumBase.BaseTestsuite.Driver">
+            <summary>
+            Instance to browserType driver
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.#ctor">
+            <summary>
+            Constructor for BaseTestsuite. Initializes Logger object.
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.#ctor(NLog.Logger,SeleniumBase.Services.IHttpUtility,LEGO.QA.RallyCommunicator.IRally,SeleniumBase.Services.IFileService,SeleniumBase.Services.ITestSettingService)">
+            <summary>
+            Constructor used for dependency injection
+            </summary>
+            <param name="logger">Instance of Logger</param>
+            <param name="httpHelper">Instance of HttpUtility</param>
+            <param name="rallyApi">Instance of Rally</param>
+            <param name="fileService">Instance of FileService</param>
+            <param name="testSettingService">Instance of TestSettingService</param>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.Initialize">
+            <summary>
+            Sets up logging, WebDriver and other helper objects according to the settings object that is found in TestSettingService. 
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.Initialize(LEGO.QA.SharedTypes.Configuration.ITestSettings)">
+            <summary>
+                Sets up logging, WebDriver and other helper objects according to the settings object
+            </summary>
+            <param name="setting">Settings that the WebDriver, logging and helpers should be configured to</param>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.SetupBrowser(LEGO.QA.SharedTypes.Configuration.ITestSettings)">
+            <summary>
+                Setup WebDriver according to settings
+            </summary>
+            <param name="setting">Settings to configure WebDriver to</param>
+            <exception cref="T:System.NotImplementedException">Throws NotImplementedException if unknown WebDriver is specified in settings</exception>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.SetupLogging(LEGO.QA.SharedTypes.Configuration.ITestSettings,System.String)">
+            <summary>
+                Setup logging to file console and memory
+            </summary>
+            <param name="setting">TestSettings with ConsoleLogLevel set. If ConsoleLogLevel is not set, it will get default value of Info. </param>
+            <param name="testName">Name of the test that logging should be set for. This will serve as filename for test log.</param>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.PrintTestName">
+            <summary>
+            Prints test name to logger before each test starts
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.CleanUp">
+            <summary>
+                Cleans up after each test
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.TotalCleanUp">
+            <summary>
+                Cleans up after all tests
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.StaticTestFixtureTearDown">
+            <summary>
+                Test for making SeleniumBase compatible with gherking tests (Specflow)
+                This method is meant to run after all tests have run
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.StaticTestCleanUp">
+            <summary>
+                Test for making SeleniumBase compatible with gherkin tests (Specflow)
+                This method is meant to run after each test
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.TakeScreenshot(System.String)">
+            <summary>
+                Takes a screenshot at the current page the webdriver is at and saves it to an image file. Save location is relative to
+                loggingDirecotry in app.config.
+            </summary>
+            <param name="filename">Filename of the screenshot. E.g. myscreenshot.png</param>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.GetTestexecutionLog">
+            <summary>
+                Returns the log that is written until the time this method is called
+            </summary>
+            <returns>Recorded log</returns>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.TerminateWebDriver">
+            <summary>
+                Terminates WebDriver if it is active
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.AssertHelper(System.String,System.Action)">
+            <summary>
+            Processes test result before passing or failing
+            Can be configured to take screenshot before assert is executed
+            </summary>
+            <param name="testDesc">Description that will be part of screenshot filename</param>
+            <param name="action">The assert action that is performed</param>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.AssertHelper(System.Action)">
+            <summary>
+            Helper method to run assert
+            </summary>
+            <param name="action">The assert statement that should be executed.</param>
+        </member>
+        <member name="M:SeleniumBase.BaseTestsuite.AddExistingFileToTestResult(System.String)">
+            <summary>
+            Queue a file to submit together with test result to Rally
+            </summary>
+            <param name="filePath">Path to the file</param>
+            <returns>True if file exists. False if file could not be found</returns>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.AttachmentFiles">
+            <summary>
+            List of screenshots that will be submitted to rally after test. Key is filename.
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.RallyApi">
+            <summary>
+            API to communicate with Rally
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.Setting">
+            <summary>
+            The current settings that are used
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.LEGOCookieManager">
+            <summary>
+            LEGO Cookie manager instance, used for managing LEGO domain specific cookies
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.UrlHandler">
+            <summary>
+            Url handler instance, used for transforming URL according to testsettings passed to Initialize() method
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.HttpHelper">
+            <summary>
+            Http utility instance, used for checking URL HTTP status codes
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.Logger">
+            <summary>
+            NLog instance for logging
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.RallyNotes">
+            <summary>
+                Stores information to be submittet with the test case result in the note field
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.Preconditions">
+            <summary>
+            Collection of usefull pre-tests methods
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.FileService">
+            <summary>
+            Service to handle file system operations
+            </summary>
+        </member>
+        <member name="P:SeleniumBase.BaseTestsuite.TestSettingService">
+            <summary>
+            Service to handle testsettings. Reads from the file "testsetting.xml" if present and populates testsettings with default values for those remaining.
+            </summary>
+        </member>
+        <member name="T:SeleniumBase.Services.IFileService">
+            <summary>
+            Provides functionality to the filesystem
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Services.IFileService.GetFileStream(System.String,System.IO.FileMode)">
+            <summary>
+            Opens a file and returns the stream
+            </summary>
+            <param name="filePath">Path to file</param>
+            <param name="fileMode">Filemode to use for opening file</param>
+            <returns>Filestream from file</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.IFileService.OpenRead(System.String)">
+            <summary>
+            Opens an existing file with read access
+            </summary>
+            <param name="filePath">Path to file</param>
+            <returns>Stream from file</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.IFileService.ReadFileBytes(System.String)">
+            <summary>
+            Opens a file and reads content into a byte array
+            </summary>
+            <param name="filePath">Path to file</param>
+            <returns>Array of bytes read from file</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.IFileService.Exists(System.String)">
+            <summary>
+            Checks if file exist
+            </summary>
+            <param name="filePath">Path to file</param>
+            <returns>True if file exist. Otherwise false.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.IFileService.Open(System.String,System.IO.FileMode)">
+            <summary>
+            Opens a stream to the file
+            </summary>
+            <param name="filePath">Path to the file</param>
+            <param name="fileMode">Mode the file should be opened with</param>
+            <returns>Stream to the file</returns>
+        </member>
+        <member name="T:SeleniumBase.Services.FileService">
+            <summary>
+            Provides functionality to the filesystem
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Services.FileService.GetFileStream(System.String,System.IO.FileMode)">
+            <summary>
+            Opens a file and returns the stream
+            </summary>
+            <param name="filePath">Path to file</param>
+            <param name="fileMode">Mode to use for opening file</param>
+            <returns>Filestream from file</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.FileService.OpenRead(System.String)">
+            <summary>
+            Opens an existing file with read access
+            </summary>
+            <param name="filePath">Path to file</param>
+            <returns>Stream from file</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.FileService.ReadFileBytes(System.String)">
+            <summary>
+            Opens a file and reads content into a byte array
+            </summary>
+            <param name="filePath">Path to file</param>
+            <returns>Array of bytes read from file</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.FileService.Exists(System.String)">
+            <summary>
+            Checks if file exist
+            </summary>
+            <param name="filePath">Path to file</param>
+            <returns>True if file exist. Otherwise false.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.FileService.Open(System.String,System.IO.FileMode)">
+            <summary>
+            Opens a stream to the file
+            </summary>
+            <param name="filePath">Path to the file</param>
+            <param name="fileMode">Mode the file should be opened with</param>
+            <returns>Stream to the file</returns>
+        </member>
+        <member name="T:SeleniumBase.Services.IHttpUtility">
+            <summary>
+            Utility class that can handle HTTP specific tasks
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Services.IHttpUtility.CheckUrl(System.String)">
+            <summary>
+            Checks the HTTP status code for a url
+            </summary>
+            <param name="url">The url to check</param>
+            <returns>Status code for the url. 200 for OK. 404 for not found. etc.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.IHttpUtility.CheckUrl(System.Uri)">
+            <summary>
+            Checks the HTTP status code for a url
+            </summary>
+            <param name="url">The url to check</param>
+            <returns>Status code for the url. 200 for OK. 404 for not found. etc.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.IHttpUtility.CheckUrl(System.Uri,System.Boolean)">
+            <summary>
+            Checks the HTTP status code for a url
+            </summary>
+            <param name="url">The url to check</param>
+            <param name="followRedirects">Instructs the webrequest to follow redirects and return the final response code if set to true</param>
+            <returns>Status code for the url. 200 for OK. 404 for not found. etc. Returns -9999 if the status code could not be determined.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.IHttpUtility.CheckUrl(System.String,System.Boolean)">
+            <summary>
+            Checks the HTTP status code for a url
+            </summary>
+            <param name="url">The url to check</param>
+            <param name="followRedirects">Instructs the webrequest to follow redirects and return the final response code if set to true</param>
+            <returns>Status code for the url. 200 for OK. 404 for not found. etc. Returns -9999 if the status code could not be determined.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.IHttpUtility.GetHtmlDocument(System.String)">
+            <summary>
+            Retrieves a html document from an URL
+            </summary>
+            <param name="url">The url to the document to retrieve</param>
+            <returns>Document that was found at the url.</returns>
+        </member>
+        <member name="T:SeleniumBase.Services.HttpUtility">
+            <summary>
+            Utility class that can handle HTTP specific tasks
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Services.HttpUtility.CheckUrl(System.String)">
+            <summary>
+            Checks the HTTP status code for a url
+            </summary>
+            <param name="url">The url to check</param>
+            <returns>Status code for the url. 200 for OK. 404 for not found. etc. Returns -9999 if the status code could not be determined.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.HttpUtility.CheckUrl(System.Uri)">
+            <summary>
+            Checks the HTTP status code for a url
+            </summary>
+            <param name="url">The url to check</param>
+            <returns>Status code for the url. 200 for OK. 404 for not found. etc.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.HttpUtility.GetHtmlDocument(System.String)">
+            <summary>
+            Retrieves a html document from an URL
+            </summary>
+            <param name="url">The url to the document to retrieve</param>
+            <returns>Document that was found at the url.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.HttpUtility.CheckUrl(System.Uri,System.Boolean)">
+            <summary>
+            Checks the HTTP status code for a url
+            </summary>
+            <param name="url">The url to check</param>
+            <param name="followRedirects">Instructs the webrequest to follow redirects and return the final response code if set to true</param>
+            <returns>Status code for the url. 200 for OK. 404 for not found. etc. Returns -9999 if the status code could not be determined.</returns>
+        </member>
+        <member name="M:SeleniumBase.Services.HttpUtility.CheckUrl(System.String,System.Boolean)">
+            <summary>
+            Checks the HTTP status code for a url
+            </summary>
+            <param name="url">The url to check</param>
+            <param name="followRedirects">Instructs the webrequest to follow redirects and return the final response code if set to true</param>
+            <returns>Status code for the url. 200 for OK. 404 for not found. etc. Returns -9999 if the status code could not be determined.</returns>
+        </member>
+        <member name="T:SeleniumBase.Services.IThreadServices">
+            <summary>
+                Singleton wrapper for System.Threading.Thread
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Services.IThreadServices.Sleep(System.Int32)">
+            <summary>
+                Pauses execution thread
+            </summary>
+            <param name="millisecondsTimeout">Time to sleep</param>
+        </member>
+        <member name="T:SeleniumBase.Services.ThreadServices">
+            <summary>
+                Singleton wrapper for System.Threading.Thread
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Services.ThreadServices.Sleep(System.Int32)">
+            <summary>
+                Pauses execution thread
+            </summary>
+            <param name="millisecondsTimeout">Time to sleep</param>
+        </member>
+        <member name="M:SeleniumBase.Services.ThreadServices.GetInstance">
+            <summary>
+                Singleton constructor
+            </summary>
+            <returns>The one and only ;)</returns>
+        </member>
+        <member name="T:SeleniumBase.Utility">
+            <summary>
+                Utility class that contains usefull functionality
+            </summary>
+        </member>
+        <member name="M:SeleniumBase.Utility.GetBuildNumber(System.String)">
+            <summary>
+                Get the current build number
+            </summary>
+            <param name="baseUrl">e.g. 'https://account2.lego.com/en-us'</param>
+            <returns>Current build number or day of year if not available</returns>
+        </member>
+    </members>
+</doc>

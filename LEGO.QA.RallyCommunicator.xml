@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LEGO.QA.RallyCommunicator</name>
+    </assembly>
+    <members>
+        <member name="T:LEGO.QA.RallyCommunicator.ContentType">
+            <summary>
+            Content types supported by Rally Communicator
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.ContentType.Png">
+            <summary>
+            PNG fileformat
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.ContentType.Jpeg">
+            <summary>
+            JPEG fileformat
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.ContentType.Gif">
+            <summary>
+            GIF fileformat
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.ContentType.Text">
+            <summary>
+            Plain text format
+            </summary>
+        </member>
+        <member name="T:LEGO.QA.RallyCommunicator.Enums.DefectState">
+            <summary>
+            Defines defect state
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectState.Submitted">
+            <summary>
+            Submitted
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectState.Open">
+            <summary>
+            Open
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectState.Fixed">
+            <summary>
+            Fixed
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectState.Closed">
+            <summary>
+            Closed
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectState.ReOpened">
+            <summary>
+            Re-opened
+            </summary>
+        </member>
+        <member name="T:LEGO.QA.RallyCommunicator.Enums.DefectEnvironment">
+            <summary>
+            Defines environment where a defect is found
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectEnvironment.DEV">
+            <summary>
+            Developer environment
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectEnvironment.QA">
+            <summary>
+            WebQA environment
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectEnvironment.LIVE">
+            <summary>
+            Production environment
+            </summary>
+        </member>
+        <member name="T:LEGO.QA.RallyCommunicator.Enums.DefectPriority">
+            <summary>
+            Defines defect priority
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectPriority.Urgent">
+            <summary>
+            Urgent
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectPriority.High">
+            <summary>
+            High
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectPriority.Normal">
+            <summary>
+            Normal
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectPriority.Low">
+            <summary>
+            Low
+            </summary>
+        </member>
+        <member name="T:LEGO.QA.RallyCommunicator.Enums.DefectSeverity">
+            <summary>
+            Used by Rally Communicator to define defect severity
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectSeverity.Critical">
+            <summary>
+            Defines critical severity
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectSeverity.MajorProblem">
+            <summary>
+            Defines Major severity
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectSeverity.MinorProblem">
+            <summary>
+            Defines Minor severity
+            </summary>
+        </member>
+        <member name="F:LEGO.QA.RallyCommunicator.Enums.DefectSeverity.Cosmetic">
+            <summary>
+            Defines cosmetic severity
+            </summary>
+        </member>
+        <member name="T:LEGO.QA.RallyCommunicator.IRally">
+            <summary>
+            Rally communication wrapper
+            </summary>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.IRally.SubmitTestCaseResult(System.String,LEGO.QA.SharedTypes.Enums.Verdict,System.DateTime,System.String,System.String)">
+            <summary>
+                Submits a test case result to Rally
+            </summary>
+            <param name="buildNumber">Build number for the build the test case was executed against to produce this result</param>
+            <param name="verdict">Verdict of running the test case</param>
+            <param name="testCaseId">ID of the test case</param>
+            <param name="testRun">Date and time of when the test case run</param>
+            <param name="notes">Result notes\nHTML markup can be used</param>
+            <returns>Indicates if result was successfully submitted to Rally\nIf false check Latetest Exception</returns>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.IRally.AddAttachmentToLatestResult(System.String,LEGO.QA.RallyCommunicator.ContentType,System.String)">
+            <summary>
+                Adding attachment to the latest submitted test case result
+            </summary>
+            <param name="nameAndExtension">Filename and type. Eg. log.txt</param>
+            <param name="attatchmentType">Type of content. Rally must know this to serve the files correctly</param>
+            <param name="base64EncodedContent">The content attach. Must be encoded to base64 </param>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.IRally.CreateDefect(System.String,System.String,System.String,LEGO.QA.RallyCommunicator.Enums.DefectState,LEGO.QA.RallyCommunicator.Enums.DefectPriority,LEGO.QA.RallyCommunicator.Enums.DefectEnvironment,LEGO.QA.RallyCommunicator.Enums.DefectSeverity,LEGO.QA.RallyCommunicator.RallyUser)">
+            <summary>
+                Creates a defect in Rally
+            </summary>
+            <param name="name">Name of the defect</param>
+            <param name="description">Description for the defect</param>
+            <param name="projectName">Project name that the defect should be placed in</param>
+            <param name="defectState">State the defect should be created with</param>
+            <param name="defectPriority">Priority the defect should be created with</param>
+            <param name="defectEnvironment">Environment the defect should be created with</param>
+            <param name="defectSeverity">Severity the defect should be created with</param>
+            <param name="owner">User that should be set as owner of the defect</param>
+            <returns>ID for the created defect. Null if something went wrong during create time.</returns>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.IRally.DeleteDefect(System.String)">
+            <summary>
+                Deletes a defect in Rally by FormattedID
+            </summary>
+            <param name="id">The formatted ID that Rally uses. e.g. TCxxxx</param>
+            <returns>Boolean value for how it went</returns>
+        </member>
+        <member name="P:LEGO.QA.RallyCommunicator.IRally.LatestException">
+            <summary>
+            Saves latest exception occured during an operation
+            </summary>
+        </member>
+        <member name="T:LEGO.QA.RallyCommunicator.Rally">
+            <summary>
+            Rally communication wrapper
+            </summary>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.Rally.#ctor">
+            <summary>
+            Constructor for Rally
+            Reads from app.config to find workspace, username and password to use during operation
+            </summary>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.Rally.#ctor(Rally.RestApi.RallyRestApi)">
+            <summary>
+            Constructor for Rally - Used for mocking RallyRestApi
+            </summary>
+            <param name="api">Mock of RallyRestApi</param>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.Rally.SubmitTestCaseResult(System.String,LEGO.QA.SharedTypes.Enums.Verdict,System.DateTime,System.String,System.String)">
+            <summary>
+                Submits a test case result to Rally
+            </summary>
+            <param name="buildNumber">Build number for the build the test case was executed against to produce this result</param>
+            <param name="verdict">Verdict of running the test case</param>
+            <param name="testCaseId">ID of the test case</param>
+            <param name="testRun">Date and time of when the test case run</param>
+            <param name="notes">Result notes\nHTML markup can be used</param>
+            <returns>Indicates if result was successfully submitted to Rally\nIf false check Latetest Exception</returns>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.Rally.AddAttachmentToLatestResult(System.String,LEGO.QA.RallyCommunicator.ContentType,System.String)">
+            <summary>
+                Adding attachment to the latest submitted test case result
+            </summary>
+            <param name="nameAndExtension">Filename and type. Eg. log.txt</param>
+            <param name="attatchmentType">Type of content. Rally must know this to serve the files correctly</param>
+            <param name="base64EncodedContent">The content attach. Must be encoded to base64 </param>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.Rally.CreateDefect(System.String,System.String,System.String,LEGO.QA.RallyCommunicator.Enums.DefectState,LEGO.QA.RallyCommunicator.Enums.DefectPriority,LEGO.QA.RallyCommunicator.Enums.DefectEnvironment,LEGO.QA.RallyCommunicator.Enums.DefectSeverity,LEGO.QA.RallyCommunicator.RallyUser)">
+            <summary>
+                Creates a defect in Rally
+            </summary>
+            <param name="name">Name of the defect</param>
+            <param name="description">Description for the defect</param>
+            <param name="projectName">Project name that the defect should be placed in</param>
+            <param name="defectState">State the defect should be created with</param>
+            <param name="defectPriority">Priority the defect should be created with</param>
+            <param name="defectEnvironment">Environment the defect should be created with</param>
+            <param name="defectSeverity">Severity the defect should be created with</param>
+            <param name="owner">User that should be set as owner of the defect</param>
+            <returns>ID for the created defect. Null if something went wrong during create time.</returns>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.Rally.DeleteDefect(System.String)">
+            <summary>
+                Deletes a defect in Rally by FormattedID
+            </summary>
+            <param name="id">The formatted ID that Rally uses. e.g. TCxxxx</param>
+            <returns>Boolean value for how it went</returns>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.Rally.FormatDateTimeToXsdString(System.DateTime)">
+            <summary>
+                Converts a dateTime to a xsd:dateTime {YYYY-MM-DD}T{HH:MM:SS}
+            </summary>
+            <param name="dateTime">A datetime object with date and time set</param>
+            <returns>String containing date and time in xsd:dateTime format</returns>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.Rally.GetTestCaseRef(Rally.RestApi.RallyRestApi,System.String)">
+            <summary>
+                Fetches reference for test case
+            </summary>
+            <param name="api">Rally _API instance to use for gathering test case</param>
+            <param name="testCaseId">ID of test case to fetch</param>
+            <returns>Test case reference</returns>
+        </member>
+        <member name="M:LEGO.QA.RallyCommunicator.Rally.GetProjectRef(Rally.RestApi.RallyRestApi,System.String)">
+            <summary>
+                Fetches reference for project
+            </summary>
+            <param name="api">Rally _API instance to use for gathering test case</param>
+            <param name="projectName">Name of project to fetch</param>
+            <returns>Reference to project</returns>
+        </member>
+        <member name="P:LEGO.QA.RallyCommunicator.Rally.LatestException">
+            <summary>
+            Saves latest exception occured during an operation
+            </summary>
+        </member>
+        <member name="T:LEGO.QA.RallyCommunicator.RallyUser">
+            <summary>
+                Rally user domain object
+            </summary>
+        </member>
+        <member name="P:LEGO.QA.RallyCommunicator.RallyUser.FirstName">
+            <summary>
+                Firstname of Rally user
+            </summary>
+        </member>
+        <member name="P:LEGO.QA.RallyCommunicator.RallyUser.LastName">
+            <summary>
+                Lastname of Rally user
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<TestSetting xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Locale>en-us</Locale>
+  <Browser>Chrome</Browser>
+  <Environment>DEV</Environment>
+  <SubmitTestCaseResultToRally>false</SubmitTestCaseResultToRally>
+  <UseRemoteBrowser>false</UseRemoteBrowser>
+  <BaseUrl>http://www.lego.com</BaseUrl>
+  <UseDevInsteadOfLocalServices>true</UseDevInsteadOfLocalServices>
+  <ClearDateOfBirthCookie>false</ClearDateOfBirthCookie>
+  <ConsoleLogLevel>loglevel.debug</ConsoleLogLevel>
+  <UseNewBrowserInstance>false</UseNewBrowserInstance>
+  <BrowserStartUpOptions>null</BrowserStartUpOptions>
+  <LoggingDirectory>.\logs</LoggingDirectory>
+  <RemoteWebDriverUrl>http://dkaapp-st1.corp.lego.com:4444/wd/hub</RemoteWebDriverUrl>
+</TestSetting>

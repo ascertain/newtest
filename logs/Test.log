@@ -1,0 +1,19 @@
+2015-04-14 22:23:03.2380|INFO|SeleniumBase.BaseTestsuite|Initializing LEGOUrlHandler helper object.
+2015-04-14 22:23:03.2490|INFO|SeleniumBase.BaseTestsuite|Starting webdriver.
+2015-04-14 22:23:04.8010|INFO|SeleniumBase.BaseTestsuite|Started [Chrome] as webdriver.
+2015-04-14 22:23:04.8080|DEBUG|SeleniumBase.BaseTestsuite|Using logging directory for reading screenshots: C:\Users\in8mohka\Desktop\POC\Spoon\SiteCatalyst\SpoonSiteTracking\SpoonSiteTracking\bin\Debug\logs
+2015-04-14 22:26:22.4720|INFO|SeleniumBase.BaseTestsuite|Logging is setup.
+2015-04-14 22:26:22.4810|INFO|SeleniumBase.BaseTestsuite|Initializing LEGOUrlHandler helper object.
+2015-04-14 22:26:22.4810|INFO|SeleniumBase.BaseTestsuite|Starting webdriver.
+2015-04-14 22:26:23.8860|INFO|SeleniumBase.BaseTestsuite|Started [Chrome] as webdriver.
+2015-04-14 22:26:23.8860|DEBUG|SeleniumBase.BaseTestsuite|Using logging directory for reading screenshots: C:\Users\in8mohka\Desktop\POC\Spoon\SiteCatalyst\SpoonSiteTracking\SpoonSiteTracking\bin\Debug\logs
+2015-04-14 22:28:29.4280|INFO|SeleniumBase.BaseTestsuite|Logging is setup.
+2015-04-14 22:28:29.4440|INFO|SeleniumBase.BaseTestsuite|Initializing LEGOUrlHandler helper object.
+2015-04-14 22:28:29.4440|INFO|SeleniumBase.BaseTestsuite|Starting webdriver.
+2015-04-14 22:28:30.8750|INFO|SeleniumBase.BaseTestsuite|Started [Chrome] as webdriver.
+2015-04-14 22:28:30.8830|DEBUG|SeleniumBase.BaseTestsuite|Using logging directory for reading screenshots: C:\Users\in8mohka\Desktop\POC\Spoon\SiteCatalyst\SpoonSiteTracking\SpoonSiteTracking\bin\Debug\logs
+2015-04-14 22:32:54.5320|INFO|SeleniumBase.BaseTestsuite|Logging is setup.
+2015-04-14 22:32:54.5410|INFO|SeleniumBase.BaseTestsuite|Initializing LEGOUrlHandler helper object.
+2015-04-14 22:32:54.5410|INFO|SeleniumBase.BaseTestsuite|Starting webdriver.
+2015-04-14 22:32:55.9560|INFO|SeleniumBase.BaseTestsuite|Started [Chrome] as webdriver.
+2015-04-14 22:32:55.9560|DEBUG|SeleniumBase.BaseTestsuite|Using logging directory for reading screenshots: C:\Users\in8mohka\Desktop\POC\Spoon\SiteCatalyst\SpoonSiteTracking\SpoonSiteTracking\bin\Debug\logs
